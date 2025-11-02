@@ -5,7 +5,7 @@ $superheroes = [
       "id" => 1,
       "name" => "Steve Rogers",
       "alias" => "Captain America",
-      "biography" => "Recipient of the Super-Soldier serum, World War II hero Steve Rogers fights for American ideals as one of the world’s mightiest heroes and the leader of the Avengers.",
+      "biography" => "Recipient of the Super-Soldier serum, World War II hero Steve Rogers fights for American ideals as one of the world's mightiest heroes and the leader of the Avengers.",
   ],
   [
       "id" => 2,
@@ -17,7 +17,7 @@ $superheroes = [
       "id" => 3,
       "name" => "Peter Parker",
       "alias" => "Spiderman",
-      "biography" => "Bitten by a radioactive spider, Peter Parker’s arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles.",
+      "biography" => "Bitten by a radioactive spider, Peter Parker's arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles.",
   ],
   [
       "id" => 4,
@@ -29,25 +29,25 @@ $superheroes = [
       "id" => 5,
       "name" => "Natasha Romanov",
       "alias" => "Black Widow",
-      "biography" => "Despite super spy Natasha Romanoff’s checkered past, she’s become one of S.H.I.E.L.D.’s most deadly assassins and a frequent member of the Avengers.",
+      "biography" => "Despite super spy Natasha Romanoff's checkered past, she's become one of S.H.I.E.L.D.'s most deadly assassins and a frequent member of the Avengers.",
   ],
   [
       "id" => 6,
       "name" => "Bruce Banner",
       "alias" => "Hulk",
-      "biography" => "Dr. Bruce Banner lives a life caught between the soft-spoken scientist he’s always been and the uncontrollable green monster powered by his rage.",
+      "biography" => "Dr. Bruce Banner lives a life caught between the soft-spoken scientist he's always been and the uncontrollable green monster powered by his rage.",
   ],
   [
       "id" => 7,
       "name" => "Clint Barton",
       "alias" => "Hawkeye",
-      "biography" => "A master marksman and longtime friend of Black Widow, Clint Barton serves as the Avengers’ amazing archer.",
+      "biography" => "A master marksman and longtime friend of Black Widow, Clint Barton serves as the Avengers' amazing archer.",
   ],
   [
       "id" => 8,
       "name" => "T'challa",
       "alias" => "Black Panther",
-      "biography" => "T’Challa is the king of the secretive and highly advanced African nation of Wakanda - as well as the powerful warrior known as the Black Panther.",
+      "biography" => "T'Challa is the king of the secretive and highly advanced African nation of Wakanda - as well as the powerful warrior known as the Black Panther.",
   ],
   [
       "id" => 9,
@@ -63,10 +63,41 @@ $superheroes = [
   ], 
 ];
 
-?>
+// Check if a query parameter was passed
+if (isset($_GET['query'])) {
+    // Sanitize the input
+    $query = htmlspecialchars(trim($_GET['query']), ENT_QUOTES, 'UTF-8');
+    
+    // Search for the superhero by name or alias (case-insensitive)
+    $found = false;
+    foreach ($superheroes as $superhero) {
+        if (strcasecmp($superhero['name'], $query) === 0 || strcasecmp($superhero['alias'], $query) === 0) {
+            // Superhero found - display individual format
+            echo "<h2>RESULT</h2>";
+            echo "<hr>";
+            echo "<h3>" . strtoupper(htmlspecialchars($superhero['alias'])) . "</h3>";
+            echo "<h4>" . htmlspecialchars($superhero['name']) . "</h4>";
+            echo "<p>" . htmlspecialchars($superhero['biography']) . "</p>";
+            $found = true;
+            break;
+        }
+    }
+    
+    // If not found, display error message
+    if (!$found) {
+        echo "<h2>RESULT</h2>";
+        echo "<hr>";
+        echo "<p class='error'>SUPERHERO NOT FOUND</p>";
+    }
+} else {
+    // No query parameter - display all superheroes as a list
+    echo "<h2>RESULT</h2>";
+    echo "<hr>";
+    echo "<ul>";
+    foreach ($superheroes as $superhero) {
+        echo "<li>" . htmlspecialchars($superhero['alias']) . "</li>";
+    }
+    echo "</ul>";
+}
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+?>

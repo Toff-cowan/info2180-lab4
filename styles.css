@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #dde3e8;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+
+    background: linear-gradient(to bottom, #5b94bd 0%, #547aa1 100%);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+main {
+    max-width: 700px;
+    margin: 40px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.search-container {
+    background: #f2f5f7;
+    padding: 30px;
+}
+
+.search-container label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+} 
+
+.search-container div {
+    display: flex;
+    align-items: stretch;
+}
+
+#searchField {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    margin-right: 10px;
+    font-family: inherit;
+    background-color: white;
+}
+
+#searchField::placeholder {
+    color: #999;
+}
+
+#searchBtn {
+    background-color: #d64242;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+#searchBtn:hover {
+    background-color: #c23838;
+}
+
+#result {
+    background: #f2f5f7;
+    padding: 30px;
+    min-height: 200px;
+}
+
+#result:empty {
+    display: none;
+}
+
+#result h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+#result h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+#result h4 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+#result p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #333;
+    margin: 0;
+}
+
+#result ul {
+    list-style-type: disc;
+    padding-left: 25px;
+    margin: 0;
+}
+
+#result ul li {
+    padding: 8px 0;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+#result hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 15px 0 20px 0;
+}
+
+#result .error {
+    color: #d64242;
+    font-weight: 700;
+    font-size: 15px;
+}
